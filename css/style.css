@@ -27,7 +27,10 @@ body, html {
     font-weight: 600;
     color: white;
 }
-
+.logo img {
+    height: 45px; /* Adjust as needed */
+    width: auto;
+}
 /* Navbar Links */
 .nav-links {
     list-style: none;

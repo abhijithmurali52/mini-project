@@ -13,7 +13,8 @@
     <!-- Navbar -->
     <nav class="navbar">
         <div class="logo">
-            <img src="" alt="Travio">
+            <!-- <img src="./assets/logo.ico" alt="Travio"> -->
+             Travio
         </div>
         <ul class="nav-links">
             <li><a href="index.html">Home</a></li>
@@ -27,13 +28,21 @@
     <section class="explore">
         <div class="slider-container">
             <div class="main-image">
-                <img id="current-image" src="./assets/bg-image.jpg" alt="Destination 1">
+                <img id="current-image" src="./assets/anamudy-peak.jpg" alt="Destination 1">
+                <div class="image-info">
+                    <h2 id="image-title">Anamudy Peak</h2>
+                    <p id="image-description">The highest peak in South India, offering stunning views and adventurous trekking trails.</p>
+                </div>
             </div>
             <div class="preview-image">
-                <img id="next-image" src="./assets/1.png" alt="Destination 2">
+                <img id="next-image" src="./assets/attukad.jpg" alt="Destination 2">
             </div>
         </div>
-        <button class="next">Next ❯</button>
+        <div class="nav-buttons">
+            <div class="arrow" id="prev">&#8592;</div> <!-- Left Arrow -->
+            <div class="arrow" id="next">&#8594;</div> <!-- Right Arrow -->
+        </div>
+        
     </section>
     <script src="js/explore.js"></script>
 </body>

@@ -24,7 +24,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 document.addEventListener("DOMContentLoaded", function () {
     const title = "Welcome to Travio";
-    const subtitle = "Where creativity meets perfection";
+    const subtitle = "Unveiling the beauty of exploration";
     
     const titleElement = document.getElementById("hero-title");
     const subtitleElement = document.getElementById("hero-subtitle");
