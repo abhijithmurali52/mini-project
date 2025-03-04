@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Explore Page</title>
+    <link rel="stylesheet" href="css/explore.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+</head>
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="logo">
+            <img src="" alt="Travio">
+        </div>
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="explore.html">Explore</a></li>
+            <li><a href="#">About Us</a></li>
+            <li><a href="#">Wish List</a></li>
+        </ul>
+    </nav>
+
+    <!-- Explore Section with Image Slider -->
+    <section class="explore">
+        <div class="slider-container">
+            <div class="main-image">
+                <img id="current-image" src="./assets/bg-image.jpg" alt="Destination 1">
+            </div>
+            <div class="preview-image">
+                <img id="next-image" src="./assets/1.png" alt="Destination 2">
+            </div>
+        </div>
+        <button class="next">Next ❯</button>
+    </section>
+    <script src="js/explore.js"></script>
+</body>
+</html>
