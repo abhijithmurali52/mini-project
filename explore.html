@@ -17,7 +17,7 @@
              Travio
         </div>
         <ul class="nav-links">
-            <li><a href="index.html">Home</a></li>
+            <li><a href="index.html" class="active">Home</a></li>
             <li><a href="explore.html">Explore</a></li>
             <li><a href="#">About Us</a></li>
             <li><a href="#">Wish List</a></li>
@@ -32,6 +32,7 @@
                 <div class="image-info">
                     <h2 id="image-title">Anamudy Peak</h2>
                     <p id="image-description">The highest peak in South India, offering stunning views and adventurous trekking trails.</p>
+                    <button id="read-more-btn">Read More</button>
                 </div>
             </div>
             <div class="preview-image">
@@ -44,6 +45,14 @@
         </div>
         
     </section>
+
+    <div id="modal" class="modal">
+        <div class="modal-content">
+            <span id="close-modal">&times;</span>
+            <h2 id="modal-title"></h2>
+            <p id="modal-description"></p>
+        </div>
+    </div>
     <script src="js/explore.js"></script>
 </body>
 </html>

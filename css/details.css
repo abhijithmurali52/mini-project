@@ -1,11 +1,9 @@
-/* General Styles */
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Poppins:wght@300;400;600&display=swap');
 body, html {
     margin: 0;
     padding: 0;
     font-family: 'Poppins', sans-serif;
     overflow-x: hidden;
-    scroll-behavior: smooth;
 }
 
 /* Navbar */
@@ -141,196 +139,170 @@ body, html {
         padding: 10px 0;
     }
 }
-/* Hero Section */
-.hero {
-    position: relative;
+
+
+/* Full-width Image on Top */
+.top-image-container {
     width: 100%;
-    height: 100vh;
-    background: url('../assets/bg-image.jpg') no-repeat center center/cover;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    color: white;
+    height: 70vh; /* 25% of the viewport height */
+    overflow: hidden;
 }
 
-.overlay {
-    position: absolute;
+.top-image-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Ensures the image fills the space without distortion */
+}
+
+
+ /* Box Container */
+ .destination-box {
+    max-width: 90%;
+    margin: 40px auto;
+    padding: 30px;
+    background: white;
+    border: 2px solid #ddd;
+    border-radius: 10px;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Split Screen Layout */
+.destination-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+}
+
+.left-section {
+    flex: 1;
+    max-width: 50%;
+    padding-right: 20px;
+}
+
+.right-section {
+    flex: 1;
+    max-width: 50%;
+    text-align: center;
+    border-left: 2px solid #ddd;
+    padding-left: 20px;
+}
+
+.wishlist-btn {
+    display: inline-block;
+    background: #f37002;
+    color: white;
+    font-size: 18px;
+    padding: 12px 20px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    transition: 0.3s;
+}
+
+.wishlist-btn:hover {
+    background: #d9534f;
+}
+
+.extra-details h3 {
+    margin-top: 20px;
+    color: #0077b6;
+}
+
+/* Map Section */
+#map {
+    width: 100%;
+    height: 400px;
+    margin-top: 30px;
+    border-radius: 10px;
+    border: 2px solid #ddd;
+}
+
+@media (max-width: 768px) {
+    .destination-container {
+        flex-direction: column;
+    }
+
+    .left-section, .right-section {
+        max-width: 100%;
+    }
+
+    .right-section {
+        border-left: none;
+        border-top: 2px solid #ddd;
+        padding-top: 20px;
+    }
+}
+
+/*feedback popup */
+/* Feedback Popup Container */
+.popup-container {
+    position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.6);
-}
-
-.hero-content {
-    position: relative;
-    z-index: 2;
-    transform: scale(0.8);
-    opacity: 0;
-}
-
-.hero-content h1 {
-    font-family: 'Playfair Display', serif;
-    font-size: 3.5rem;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-}
-
-.hero-content p {
-    font-family: 'Poppins', sans-serif;
-    font-size: 1.2rem;
-    font-weight: 300;
-}
-/* Cursor Effect */
-@keyframes blink {
-    50% { border-color: transparent; }
-}
-
-.typing::after {
-    content: "|";
-    display: inline-block;
-    animation: blink 0.7s infinite;
-}
-
-.btn {
-    display: inline-block;
-    padding: 12px 24px;
-    margin-top: 20px;
-    background: linear-gradient(45deg, #f4a261, #e76f51);
-    color: white;
-    text-decoration: none;
-    border-radius: 8px;
-    font-weight: bold;
-    transition: all 0.3s ease-in-out;
-    transform: translateY(10px);
-    opacity: 0;
-}
-
-.btn:hover {
-    background: linear-gradient(45deg, #e76f51, #f4a261);
-    transform: scale(1.1);
-}
-
-.destination-heading {
-    text-align: center;
-    margin: 40px 0;
-}
-
-.destination-heading h2 {
-    font-size: 2rem;
-    font-weight: 600;
-}
-
-.destination-heading p {
-    font-size: 1rem;
-    color: #555;
-}
-
-
-/* Cards Section */
-.card-container {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 20px;
-    padding: 40px;
-}
-
-.card {
-    background: white;
-    border-radius: 10px;
-    overflow: hidden;
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s;
-}
-
-.card:hover {
-    transform: translateY(-5px);
-}
-
-.card img {
-    width: 100%;
-    height: 200px;
-    object-fit: cover;
-}
-
-.card-content {
-    padding: 15px;
-}
-
-.card-content h3 {
-    font-size: 18px;
-    margin-bottom: 10px;
-}
-
-.card-content p {
-    font-size: 14px;
-    color: #666;
-}
-.destination-details {
-    text-align: center;
-    padding: 20px;
-}
-
-.destination-details img {
-    width: 80%;
-    max-width: 600px;
-    margin: 10px 0;
-    border-radius: 10px;
-}
-
-.extra-images-container {
+    background: rgba(0, 0, 0, 0.5); /* Dark overlay */
     display: flex;
-    flex-wrap: wrap;
     justify-content: center;
-    gap: 10px;
+    align-items: center;
+    visibility: hidden; /* Initially hidden */
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
 }
-.about-us, .contact-us {
+
+/* Popup Box */
+.popup-box {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    width: 400px;
     text-align: center;
-    padding: 50px 20px;
-    max-width: 800px;
-    margin: auto;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
 }
 
-.about-us h2, .contact-us h2 {
-    font-size: 2rem;
-    margin-bottom: 15px;
-}
-
-.about-us p, .contact-us p {
-    font-size: 1rem;
-    color: #555;
-}
-
-#contact-form {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-    margin-top: 20px;
-}
-
-#contact-form input,
-#contact-form textarea {
+/* Text Area */
+#popup-feedback-text {
     width: 100%;
+    height: 100px;
     padding: 10px;
     border: 1px solid #ddd;
     border-radius: 5px;
+    font-size: 16px;
+    margin-top: 10px;
 }
 
-#contact-form .btn {
-    background-color: #ff5a5f;
+/* Buttons */
+.popup-buttons {
+    margin-top: 10px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.submit-btn, .close-btn {
+    background: #0077b6;
     color: white;
-    padding: 10px 15px;
+    font-size: 16px;
+    padding: 8px 15px;
     border: none;
     cursor: pointer;
     border-radius: 5px;
 }
 
-#contact-form .btn:hover {
-    background-color: #e0484d;
-}
-section {
-    scroll-margin-top: 80px; /* Adjust based on navbar height */
+.close-btn {
+    background: #bbb;
 }
 
+.submit-btn:hover {
+    background: #005f8a;
+}
+
+.close-btn:hover {
+    background: #999;
+}
+
+/* Show Popup */
+.popup-container.show {
+    visibility: visible;
+    opacity: 1;
+}

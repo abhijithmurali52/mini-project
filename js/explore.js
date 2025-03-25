@@ -4,12 +4,12 @@ document.addEventListener("DOMContentLoaded", function () {
         {
             src: "../assets/anamudy-peak.jpg",
             title: "Anamudy Peak",
-            description: "The highest peak in South India, offering stunning views and adventurous trekking trails."
+            description: "The highest peak in South India, offering stunning views and adventurous trekking trails.",
         },
         {
             src: "../assets/attukad.jpg",
             title: "Attukad Waterfalls",
-            description: "A mesmerizing waterfall surrounded by lush greenery, perfect for a scenic escape."
+            description: "A mesmerizing waterfall surrounded by lush greenery, perfect for a scenic escape.",
         },
         {
             src: "../assets/blossom-hydel-park.jpg",
@@ -95,6 +95,12 @@ document.addEventListener("DOMContentLoaded", function () {
     const imageDescription = document.getElementById("image-description");
     const nextButton = document.getElementById("next");
     const prevButton = document.getElementById("prev");
+     const readMoreBtn = document.getElementById("read-more-btn");
+
+    const modal = document.getElementById("modal");
+    const modalTitle = document.getElementById("modal-title");
+    const modalDescription = document.getElementById("modal-description");
+    const closeModal = document.getElementById("close-modal");
 
     gsap.set(previewImage, {
         right: "5%",  // Keep it on the right
@@ -126,6 +132,7 @@ document.addEventListener("DOMContentLoaded", function () {
         imageTitle.textContent = images[index].title;
         animateDescription(images[index].description);
         previewImage.src = images[(index + 1) % images.length].src;
+        readMoreBtn.style.display = "block";
     }
 
     function nextSlide() {
@@ -166,6 +173,28 @@ document.addEventListener("DOMContentLoaded", function () {
             }
         });
     }
+     // Read More Button Click
+    readMoreBtn.addEventListener("click", function () {
+    if (images[index].details) {
+        modal.style.display = "flex";
+        modalTitle.textContent = images[index].title;
+        modalDescription.textContent = images[index].details;
+    }
+});
+
+
+
+    // Close Modal
+    closeModal.addEventListener("click", function () {
+        modal.style.display = "none";
+    });
+
+    // Close modal when clicking outside the content
+    window.addEventListener("click", function (event) {
+        if (event.target === modal) {
+            modal.style.display = "none";
+        }
+    });
     
 
     function prevSlide() {
