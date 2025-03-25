@@ -53,22 +53,27 @@ document.addEventListener("DOMContentLoaded", () => {
     document.getElementById("main-image").src = destination.src;
     document.getElementById("destination-location").textContent = destination.location || "Not Available";
     document.getElementById("destination-time").textContent = destination.bestTimeToVisit || "All year round";
+    document.getElementById("destination-entryFee").textContent = destination.entryFee || "Not listed";
+    document.getElementById("destination-timings").textContent = destination.timings || "Not listed";
+    document.getElementById("destination-culturalSignificance").textContent = destination.culturalSignificance || "Not listed";
+
+
     document.getElementById("destination-howToReach").innerHTML = destination.howToReach?.map(a => `<p>${a}</p>`).join("") || "<p>Not listed</p>";
 
     document.getElementById("destination-activities").innerHTML = destination.activities?.map(a => `<p>${a}</p>`).join("") || "<p>No activities listed</p>";
     document.getElementById("destination-attractions").innerHTML = destination.nearbyAttractions?.map(a => `<p>${a}</p>`).join("") || "<p>No attractions listed</p>";
     document.getElementById("destination-wildlife").innerHTML = destination.wildlife?.map(a => `<p>${a}</p>`).join("") || "<p>No wildlife details available</p>";
     
-    document.getElementById("destination-elevation").textContent = `Elevation: ${destination.geography.elevation}`;
-    document.getElementById("destination-climate").textContent = `Climate: ${destination.geography.climate}`;
-    document.getElementById("destination-terrain").textContent = `Terrain: ${destination.geography.terrain}`;
-    document.getElementById("destination-mountainRange").textContent = `mountainRange: ${destination.geography.mountainRange}`;
+    document.getElementById("destination-elevation").textContent = `Elevation: ${destination.geography.elevation || "Not available"}`;
+    document.getElementById("destination-climate").textContent = `Climate: ${destination.geography.climate || "Not available"}`;
+    document.getElementById("destination-terrain").textContent = `Terrain: ${destination.geography.terrain || "Not available" || "Not available"}`;
+    document.getElementById("destination-mountainRange").textContent = `mountainRange: ${destination.geography.mountainRange || "Not available"}`;
 
     
-    document.getElementById("destination-summer").textContent = `Summer: ${destination.weatherConditions.summer}`;
-    document.getElementById("destination-monsoon").textContent = `Monsoon: ${destination.weatherConditions.monsoon}`;
-    document.getElementById("destination-winter").textContent = `Winter: ${destination.weatherConditions.winter}`;
-    
+    document.getElementById("destination-summer").textContent = `Summer: ${destination.weatherConditions.summer || "Not available"}`;
+    document.getElementById("destination-monsoon").textContent = `Monsoon: ${destination.weatherConditions.monsoon || "Not available"}`;
+    document.getElementById("destination-winter").textContent = `Winter: ${destination.weatherConditions.winter || "Not available"}`;
+        
     document.getElementById("destination-safety").innerHTML = destination.safetyPrecautions?.map(t => `<li>${t}</li>`).join("") || "<li>No safety tips available</li>";
 
     // Wishlist button functionality
