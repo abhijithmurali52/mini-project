@@ -28,49 +28,89 @@
         <img id="main-image" src="" alt="Destination Image">
     </div>
 
-    <div class="destination-box">
-        <section class="destination-container">
-            <!-- Left Section: Basic Details -->
-            <div class="left-section">
-                <h1 id="destination-title"></h1>
-                <p id="destination-description"></p>
-                <h3>📍 Location:</h3>
-                <p id="destination-location"></p>
-                <h3>🕰️ Best Time to Visit:</h3>
-                <p id="destination-time"></p>
-            </div>
+    <div class="container">
+        <div class="sections lefts">  
+            <h1 id="destination-title"></h1>
+            <p id="destination-description"></p>
+            <p><strong>Location:</strong> <span id="destination-location"></span></p>
+            <p><strong>Best Time to Visit:</strong> <span id="destination-time"></span></p>
+        </div>
 
-            <!-- Right Section: Wishlist Button & Extra Details -->
-            <div class="right-section">
-                <button class="wishlist-btn" onclick="addToWishlist()">❤️ Add to Wishlist</button>
-                
-                <div class="extra-details">
-                    <h3>🎯 Things to Do:</h3>
-                    <ul id="destination-activities"></ul>
-
-                    <h3>🏞 Nearby Attractions:</h3>
-                    <ul id="destination-attractions"></ul>
-                </div>
+        <div class="sections rights">
+            <!-- <p>Save your favorite destinations to your wishlist and plan your dream trip!</p>   -->
+            <button id="wishlist-btn">❤️ Add to Wishlist</button>  
             </div>
-        </section>
     </div>
 
-    <!-- Map -->
-    <div id="map"></div>
-
-    <!--feedback popup-->
-    <div id="feedback-popup" class="popup-container">
-        <div class="popup-box">
-            <h2>📝 We Value Your Feedback!</h2>
-            <p>Tell us about your experience with this destination.</p>
-            <textarea id="popup-feedback-text" placeholder="Write your feedback here..." required></textarea>
-            <div class="popup-buttons">
-                <button id="submit-feedback" class="submit-btn">Submit</button>
-                <button id="close-popup" class="close-btn">Close</button>
-            </div>
+    <div class="container">
+        <div class="section left">
+            <h2>Activities</h2>
+            <div id="destination-activities"></div>
+        </div>
+        <div class="section right">
+            <h2>Nearby Attractions</h2>
+            <div id="destination-attractions"></div>
         </div>
     </div>
 
+    <div class="container">
+        <div class="section left">
+            <h2>Wildlife</h2>
+            <div id="destination-wildlife"></div>
+        </div>
+        <div class="section right">
+            <h2>Geographical Details</h2>
+            <p id="destination-elevation"></p>
+            <p id="destination-climate"></p>
+            <p id="destination-terrain"></p>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="section left">
+            <h2>Weather Conditions</h2>
+            <p id="destination-summer"></p>
+            <p id="destination-monsoon"></p>
+            <p id="destination-winter"></p>
+            <p id="destination-mountainRange"></p>
+
+        </div>
+        <div class="section right">
+            <h2>Safety Precautions</h2>
+            <ul id="destination-safety"></ul>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="section left">
+            <h2>How to Reach</h2>
+            <div id="destination-howToReach"></div>
+        </div>
+
+    </div>
+
+    <!-- Map -->
+    <!-- <div id="map"></div> -->
+
+<!-- Feedback Section -->
+<section class="feedback-container">
+    <h2>📝 We Value Your Feedback!</h2>
+    <p>Help us improve by sharing your experience.</p>
+    
+    <div class="rating">
+        <span class="star" data-value="1">★</span>
+        <span class="star" data-value="2">★</span>
+        <span class="star" data-value="3">★</span>
+        <span class="star" data-value="4">★</span>
+        <span class="star" data-value="5">★</span>
+    </div>
+    
+    <textarea id="feedback-text" placeholder="Write your feedback here..." required></textarea>
+    
+    <button id="submit-feedback" class="feedback-btn">Submit Feedback</button>
+    
+    <p id="feedback-message"></p>
+</section>
     <!-- Scripts -->
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
     <script src="js/details.js"></script>

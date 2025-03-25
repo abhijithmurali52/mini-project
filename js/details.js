@@ -43,70 +43,101 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
 
-
-
 document.addEventListener("DOMContentLoaded", () => {
     const destinationData = localStorage.getItem("selectedDestination");
-
-    if (!destinationData) {
-        console.error("No destination data found! Redirecting to home...");
-        window.location.href = "index.html";
-        return;
-    }
-
+    if (!destinationData) return;
+    
     const destination = JSON.parse(destinationData);
-
     document.getElementById("destination-title").textContent = destination.title;
     document.getElementById("destination-description").textContent = destination.description;
     document.getElementById("main-image").src = destination.src;
-    document.getElementById("main-image").alt = destination.title;
-
-    // Extra details
     document.getElementById("destination-location").textContent = destination.location || "Not Available";
-    document.getElementById("destination-time").textContent = destination.bestTime || "All year round";
+    document.getElementById("destination-time").textContent = destination.bestTimeToVisit || "All year round";
+    document.getElementById("destination-howToReach").innerHTML = destination.howToReach?.map(a => `<p>${a}</p>`).join("") || "<p>Not listed</p>";
+
+    document.getElementById("destination-activities").innerHTML = destination.activities?.map(a => `<p>${a}</p>`).join("") || "<p>No activities listed</p>";
+    document.getElementById("destination-attractions").innerHTML = destination.nearbyAttractions?.map(a => `<p>${a}</p>`).join("") || "<p>No attractions listed</p>";
+    document.getElementById("destination-wildlife").innerHTML = destination.wildlife?.map(a => `<p>${a}</p>`).join("") || "<p>No wildlife details available</p>";
     
-    // Populate activities
-    const activitiesList = document.getElementById("destination-activities");
-    activitiesList.innerHTML = destination.activities?.map(activity => `<p>${activity}</p>`).join("") || "<li>No activities listed</li>";
-                                                                          //initially li is used instead of p                    
-    // Populate nearby attractions
-    const attractionsList = document.getElementById("destination-attractions");
-    attractionsList.innerHTML = destination.attractions?.map(attraction => `<p>${attraction}</p>`).join("") || "<li>No nearby attractions listed</li>";
+    document.getElementById("destination-elevation").textContent = `Elevation: ${destination.geography.elevation}`;
+    document.getElementById("destination-climate").textContent = `Climate: ${destination.geography.climate}`;
+    document.getElementById("destination-terrain").textContent = `Terrain: ${destination.geography.terrain}`;
+    document.getElementById("destination-mountainRange").textContent = `mountainRange: ${destination.geography.mountainRange}`;
 
- // Initialize OpenStreetMap
- var map = L.map('map').setView([10.0889, 77.0595], 13); // Default to Munnar
+    
+    document.getElementById("destination-summer").textContent = `Summer: ${destination.weatherConditions.summer}`;
+    document.getElementById("destination-monsoon").textContent = `Monsoon: ${destination.weatherConditions.monsoon}`;
+    document.getElementById("destination-winter").textContent = `Winter: ${destination.weatherConditions.winter}`;
+    
+    document.getElementById("destination-safety").innerHTML = destination.safetyPrecautions?.map(t => `<li>${t}</li>`).join("") || "<li>No safety tips available</li>";
 
- L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-     attribution: '© OpenStreetMap contributors'
- }).addTo(map);
+    // Wishlist button functionality
+    const wishlistBtn = document.getElementById("wishlist-btn");
+    let wishlist = JSON.parse(localStorage.getItem("wishlist")) || [];
+    
+    if (wishlist.includes(destination.title)) {
+        wishlistBtn.classList.add("active");
+        wishlistBtn.textContent = "❤️ Added to Wishlist";
+    }
+    
+    wishlistBtn.addEventListener("click", () => {
+        if (wishlist.includes(destination.title)) {
+            wishlist = wishlist.filter(item => item !== destination.title);
+            wishlistBtn.textContent = "❤️ Add to Wishlist";
+            wishlistBtn.classList.remove("active");
+        } else {
+            wishlist.push(destination.title);
+            wishlistBtn.textContent = "❤️ Added to Wishlist";
+            wishlistBtn.classList.add("active");
+        }
+        localStorage.setItem("wishlist", JSON.stringify(wishlist));
+    });
+}); // Initialize OpenStreetMap
+//  var map = L.map('map').setView([10.0889, 77.0595], 13); // Default to Munnar
 
- L.marker([10.0889, 77.0595]).addTo(map)
-     .bindPopup(destination.title)
-     .openPopup();});
+//  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+//      attribution: '© OpenStreetMap contributors'
+//  }).addTo(map);
+
+//  L.marker([10.0889, 77.0595]).addTo(map)
+//      .bindPopup(destination.title)
+//      .openPopup();});
 
 
      document.addEventListener("DOMContentLoaded", function () {
-        setTimeout(function () {
-            document.getElementById("feedback-popup").classList.add("show");
-        }, 10000); // Show after 10 seconds
+        const submitBtn = document.getElementById("submit-feedback");
+        const feedbackText = document.getElementById("feedback-text");
+        const feedbackMessage = document.getElementById("feedback-message");
+        const stars = document.querySelectorAll(".star");
     
-        // Close Popup
-        document.getElementById("close-popup").addEventListener("click", function () {
-            document.getElementById("feedback-popup").classList.remove("show");
+        let selectedRating = 0;
+    
+        // Handle Star Click
+        stars.forEach((star) => {
+            star.addEventListener("click", function () {
+                selectedRating = this.getAttribute("data-value");
+                stars.forEach((s) => s.classList.remove("active"));
+                for (let i = 0; i < selectedRating; i++) {
+                    stars[i].classList.add("active");
+                }
+            });
         });
     
         // Submit Feedback
-        document.getElementById("submit-feedback").addEventListener("click", function () {
-            let feedback = document.getElementById("popup-feedback-text").value;
-    
-            if (feedback.trim() === "") {
-                alert("Please enter your feedback before submitting.");
+        submitBtn.addEventListener("click", function () {
+            if (feedbackText.value.trim() === "" || selectedRating === 0) {
+                alert("Please provide a rating and feedback before submitting.");
                 return;
             }
     
-            alert("Thank you for your feedback!");
-            document.getElementById("popup-feedback-text").value = "";
-            document.getElementById("feedback-popup").classList.remove("show");
+            // Show success message
+            feedbackMessage.innerText = "Thank you for your feedback! 😊";
+            feedbackMessage.style.display = "block";
+    
+            // Clear input
+            feedbackText.value = "";
+            stars.forEach((s) => s.classList.remove("active"));
+            selectedRating = 0;
         });
     });
     

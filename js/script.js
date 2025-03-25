@@ -28,6 +28,7 @@ document.addEventListener("DOMContentLoaded", function () {
     
     const titleElement = document.getElementById("hero-title");
     const subtitleElement = document.getElementById("hero-subtitle");
+    const buttonElement = document.querySelector(".btn"); // Get the button
 
     function typeText(element, text, callback) {
         element.innerHTML = ""; // Clear text before typing
@@ -35,20 +36,22 @@ document.addEventListener("DOMContentLoaded", function () {
         function type() {
             if (i < text.length) {
                 element.innerHTML += text.charAt(i);
-                element.classList.add("typing");
                 i++;
                 setTimeout(type, 100);
             } else {
-                element.classList.remove("typing");
-                if (callback) setTimeout(callback, 1000);
+                if (callback) setTimeout(callback, 500);
             }
         }
         type();
     }
 
     function startTypingAnimation() {
+        buttonElement.classList.remove("show"); // Hide button when animation restarts
+        
         typeText(titleElement, title, function () {
-            typeText(subtitleElement, subtitle);
+            typeText(subtitleElement, subtitle, function () {
+                buttonElement.classList.add("show"); // Show button after subtitle
+            });
         });
     }
 
@@ -58,16 +61,77 @@ document.addEventListener("DOMContentLoaded", function () {
     // Repeat every 10 seconds
     setInterval(startTypingAnimation, 10000);
 });
-const images = [
-    {
-        src: "../assets/anamudy-peak.jpg",
-        title: "Anamudi Peak",
-        description: "The highest peak in South India, offering stunning views and adventurous trekking trails.",
-        location: "Munnar, Kerala",
-        bestTimeToVisit: "November to May",
-        activities: ["Trekking", "Photography", "Wildlife Spotting"],
-        lat: 10.1667, 
-        lng: 77.0411
+const images = [{
+    title: "Anamudi Peak",
+    description: "Rising to a towering height of 8,842 feet, Anamudi is the highest peak in Southern India. It is a photographer’s delight and a trekker’s paradise. Situated in the Western Ghats in the district of Idukki, Kerala, the mountain offers a breathtaking experience to entice tourists from India as well as international travellers. Since it is located in the subtropical region, the peak does not experience any snowfall in spite of being the tallest in the Western Ghats.Covered with dense evergreen forests and meandering rivers, it is home for innumerable species of animals and birds. It is phenomenal in hosting the endangered Asian elephants, Nilgiri Tahr and Gaur. You can also find the rare Neelakurinji flowers in the forests.",
+    src: "../assets/anamudy-peak.jpg",
+
+    location: "Munnar, Kerala",
+    latitude: 10.1667,
+    longitude: 77.0411,
+
+    bestTimeToVisit: "The best time to visit Anamudi Peak is in the winter and spring season in the months from November to May. The temperature is pleasant and cool with a mild soothing breeze. It is neither very cold nor very hot, an ideal time to visit the place. ",
+
+    howToReach: [
+        "Nearest Airport: Cochin International Airport (110 km away)",
+        "Nearest Railway Station: Aluva Railway Station (120 km away)",
+        "By Road: Well-connected via Munnar town with taxis and buses available"
+    ],
+
+    entryFee: "No entry fee required",
+    timings: "6:00 AM - 5:00 PM",
+
+    activities: [
+        "Trekking",
+        "Photography",
+        "Wildlife Spotting",
+        "Camping (with special permission)",
+        "Bird Watching",
+        "Nature Walks"
+    ],
+
+    nearbyAttractions: [
+        "Eravikulam National Park",
+        "Tea Gardens of Munnar",
+        "Mattupetty Dam",
+        "Top Station",
+        "Marayoor Sandalwood Forests",
+        "Lakkam Waterfalls"
+    ],
+
+    wildlife: [
+        "Nilgiri Tahr (rare mountain goat species)",
+        "Asian Elephants",
+        "Gaurs (Indian Bison)",
+        "Leopards",
+        "Malabar Civet",
+        "Endangered Butterfly Species"
+    ],
+
+    geography: {
+        elevation: "2,695 meters (8,842 ft)",
+        mountainRange: "Western Ghats",
+        climate: "Cool and misty throughout the year",
+        terrain: "Rocky, with grasslands and thick forests"
+    },
+
+    weatherConditions: {
+        summer: "March - May (Mild, 15°C - 25°C)",
+        monsoon: "June - October (Heavy rains, trekking not recommended)",
+        winter: "November - February (Cold, 5°C - 15°C, best for trekking)"
+    },
+
+    safetyPrecautions: [
+        "Wear sturdy trekking shoes and layered clothing",
+        "Carry enough water and energy snacks",
+        "Beware of leeches during monsoon season",
+        "Avoid trekking alone; hire a local guide",
+        "Follow designated trails to protect the ecosystem",
+        "Carry a basic first-aid kit"
+    ],
+
+    culturalSignificance: "Anamudi Peak is a part of the Western Ghats, a UNESCO World Heritage Site, and holds great ecological and historical importance. The peak is considered sacred by the local tribes and is home to centuries-old flora and fauna."
+
     },
     {
         src: "../assets/attukad.jpg",
